@@ -10,8 +10,8 @@ app.use(express.json());
 
 app.post('/ask', async (req, res) => {
   try {
-    const keyword = req.query.keyword;
-    const category = req.query.category
+    const keyword = req.body.keyword;
+    const category = req.body.category
     const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
       prompt: `generate ${category} about ${keyword}`,
       max_tokens: 100,
