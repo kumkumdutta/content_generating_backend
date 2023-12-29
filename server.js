@@ -11,6 +11,7 @@ app.use(express.json());
 app.post('/ask', async (req, res) => {
   try {
     const keyword = req.body.keyword;
+    
     const category = req.body.category
     const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
       prompt: `generate ${category} about ${keyword}`,
