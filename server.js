@@ -11,17 +11,19 @@ app.use(express.json());
 app.post('/ask', async (req, res) => {
   try {
     const keyword = req.body.keyword;
-    
+
     const category = req.body.category
     const response = await axios.post('https://api.openai.com/v1/engines/text-davinci-003/completions', {
       prompt: `generate ${category} about ${keyword}`,
       max_tokens: 100,
       temperature: 0.7,
       n: 1
+
     }, {
       headers: {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
         'Content-Type': 'application/json'
+        
       }
     });
 
